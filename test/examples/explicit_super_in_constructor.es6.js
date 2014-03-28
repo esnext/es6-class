@@ -10,3 +10,6 @@ class ZeroPoint extends Point {
     super(0, 0);
   }
 }
+
+assert.equal(new ZeroPoint().x, 0);
+assert.equal(new ZeroPoint().y, 0);

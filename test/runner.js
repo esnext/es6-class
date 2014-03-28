@@ -13,6 +13,9 @@ var fs = require('fs');
 var path = require('path');
 var glob = require('glob');
 
+var vm = require('vm');
+var assert = require('assert');
+
 var helper = require('./test_helper');
 var normalize = helper.normalize;
 var compile = helper.compile;
@@ -81,6 +84,7 @@ function runTest(basename, es6file, es5file, callback) {
         var expected = normalize(es5source);
 
         if (expected === actual) {
+          vm.runInNewContext(es5source, { assert: assert });
           printSuccess(basename);
           callback(true);
         } else {

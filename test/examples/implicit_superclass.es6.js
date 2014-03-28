@@ -3,3 +3,5 @@ class Obj {
     super();
   }
 }
+
+new Obj();

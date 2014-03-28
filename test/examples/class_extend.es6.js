@@ -12,4 +12,4 @@ class Dog extends Animal {
   }
 }
 
-console.log(new Dog().sayHi());
+assert.equal(new Dog().sayHi(), 'Hi, I am a dog. WOOF!');

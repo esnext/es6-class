@@ -5,3 +5,5 @@ var Obj = (function() {
 
   return Obj;
 })();
+
+new Obj();

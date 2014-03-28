@@ -28,4 +28,4 @@ var Dog = (function() {
   return Dog;
 })();
 
-console.log(new Dog().sayHi());
+assert.equal(new Dog().sayHi(), 'Hi, I am a dog. WOOF!');

@@ -4,3 +4,5 @@ var Multiplier = (function() {
   }
   return Multiplier;
 })();
+
+assert.equal(new Multiplier(6).n, 6);

@@ -5,3 +5,5 @@ var Tripler = (function() {
   };
   return Tripler;
 })();
+
+assert.equal(new Tripler().triple(2), 6);
