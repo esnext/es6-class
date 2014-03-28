@@ -62,133 +62,8 @@ $ node
 Without arguments:
 
 ```js
-> compile('');
-'$(function() { return main(); });'
-```
-
-With a single argument:
-
-```js
-> compile('[1, 2, 3].map(n => n * 2);');
-'[1, 2, 3].map(function(n) { return n * 2; });'
-```
-
-With multiple arguments:
-
-```js
-> compile('[1, 2, 3].map((n, i) => n * i);');
-'[1, 2, 3].map(function(n, i) { return n * i; });'
-```
-
-It binds the current context:
-
-```js
-> compile('stream.on("data", d => this.data += d);');
-'stream.on("data", (function(d) { return this.data += d; }).bind(this));'
-```
-
-Or work directly with the AST:
-
-```js
-$ cat ast.json
-{
-  "type": "Program",
-  "body": [
-    {
-      "type": "ExpressionStatement",
-      "expression": {
-        "type": "CallExpression",
-        "callee": {
-          "type": "Identifier",
-          "name": "$"
-        },
-        "arguments": [
-          {
-            "type": "ArrowFunctionExpression",
-            "id": null,
-            "params": [],
-            "defaults": [],
-            "body": {
-              "type": "CallExpression",
-              "callee": {
-                "type": "Identifier",
-                "name": "main"
-              },
-              "arguments": []
-            },
-            "rest": null,
-            "generator": false,
-            "expression": true
-          }
-        ]
-      }
-    }
-  ]
-}
-$ node
-> var transform = require('es6-arrow-function').transform;
-[Function]
-> console.log JSON.stringify(transform(require('./ast.json')), null, 2);
-{
-  "type": "Program",
-  "body": [
-    {
-      "type": "ExpressionStatement",
-      "expression": {
-        "type": "CallExpression",
-        "callee": {
-          "type": "Identifier",
-          "name": "$"
-        },
-        "arguments": [
-          {
-            "type": "FunctionExpression",
-            "id": null,
-            "params": [],
-            "defaults": [],
-            "body": {
-              "type": "BlockStatement",
-              "body": [
-                {
-                  "type": "ReturnStatement",
-                  "argument": {
-                    "type": "CallExpression",
-                    "callee": {
-                      "type": "Identifier",
-                      "name": "main"
-                    },
-                    "arguments": []
-                  }
-                }
-              ]
-            },
-            "rest": null,
-            "generator": false,
-            "expression": false
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-## Command line
-
-If installing via `npm` a command line tool will be available called `es6-arrow-function`.
-
-```
-$ echo "()=>123" | es6-arrow-function
-(function () {
-  return 123;
-});
-```
-
-```
-$ es6-arrow-function $file
-(function () {
-  return 123;
-});
+> compile('class Foo {}');
+'var Foo = (function() {\n  function Foo() {}\n  return Foo;\n})();'
 ```
 
 ## Browserify
@@ -196,17 +71,13 @@ $ es6-arrow-function $file
 Browserify support is built in.
 
 ```
-$ npm install es6-arrow-function  # install local dependency
-$ browserify -t es6-arrow-function $file
-// BOILERPLATE
-(function () {
-  return 123;
-});
+$ npm install es6-class  # install local dependency
+$ browserify -t es6-class $file
 ```
 
 ## Contributing
 
-[![Build Status](https://travis-ci.org/square/es6-arrow-function.png?branch=master)](https://travis-ci.org/square/es6-arrow-function)
+[![Build Status](https://travis-ci.org/square/es6-class.png?branch=master)](https://travis-ci.org/square/es6-class)
 
 ### Setup
 
@@ -230,13 +101,12 @@ $ npm test
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-Any contributors to the master es6-arrow-function repository must sign the
-[Individual Contributor License Agreement (CLA)][cla].  It's a short form that
-covers our bases and makes sure you're eligible to contribute.
+Any contributors to the master es6-class repository must sign the [Individual
+Contributor License Agreement (CLA)][cla].  It's a short form that covers our
+bases and makes sure you're eligible to contribute.
 
 [cla]: https://spreadsheets.google.com/spreadsheet/viewform?formkey=dDViT2xzUHAwRkI3X3k5Z0lQM091OGc6MQ&ndplr=1
 
 When you have a change you'd like to see in the master repository, [send a pull
-request](https://github.com/square/es6-arrow-function/pulls). Before we merge
-your request, we'll make sure you're in the list of people who have signed a
-CLA.
+request](https://github.com/square/es6-class/pulls). Before we merge your
+request, we'll make sure you're in the list of people who have signed a CLA.
