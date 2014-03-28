@@ -1,0 +1,5 @@
+class Obj {
+  constructor() {
+    super();
+  }
+}

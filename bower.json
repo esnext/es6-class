@@ -1,0 +1,20 @@
+{
+  "name": "es6-class",
+  "version": "0.0.1",
+  "homepage": "https://github.com/square/es6-class",
+  "authors": [
+    "Brian Donovan <donovan@squareup.com>"
+  ],
+  "description": "ES6 classes compiled to ES5.",
+  "main": "lib/index.js",
+  "keywords": [
+    "es6",
+    "class"
+  ],
+  "license": "Apache 2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test"
+  ]
+}

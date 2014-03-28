@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+function showUsage(code) {
+  var name = require('path').basename(process.argv[1]);
+  console.log('Usage:', name, '[options] [--] [FILE]');
+  console.log();
+  console.log('Options:');
+  console.log();
+  console.log('  -h, --help      prints this usage info');
+  console.log();
+  console.log('Examples:');
+  console.log();
+  console.log('  # process a file and output to stdout');
+  console.log('  ' + name + ' app.js');
+  console.log();
+  console.log('  # process from stdin to stdout');
+  console.log('  echo "class Animal {}" | ' + name);
+  process.exit(+code);
+}
+
+module.exports = require('..');
+
+var run = module.exports.run = function run() {
+  var inRawArgs = false;
+  var args = [];
+
+  [].forEach.call(arguments, function(arg) {
+    if (!inRawArgs) {
+      switch(arg) {
+        case '--':
+          inRawArgs = true;
+          break;
+
+        case '-h':
+        case '--help':
+          showUsage();
+          break;
+
+        default:
+          args.push(arg);
+      }
+    } else {
+      args.push(arg);
+    }
+  });
+
+  if (args.length > 1) {
+    showUsage(1);
+  }
+
+  var stream;
+  if (process.stdin.isTTY) {
+    if (args.length === 0) {
+      showUsage(1);
+    }
+    stream = require('fs').createReadStream(args[0]);
+  } else {
+    if (args.length !== 0) {
+      showUsage(1);
+    }
+    stream = process.stdin;
+  }
+  stream.pipe(module.exports()).pipe(process.stdout);
+};
+
+if (require.main === module) {
+  run.apply(null, process.argv.slice(2));
+}

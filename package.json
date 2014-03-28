@@ -1,0 +1,30 @@
+{
+  "name": "es6-class",
+  "version": "0.0.1",
+  "description": "ES6 classes compiled to ES5.",
+  "main": "lib/index.js",
+  "bin": "bin/es6-class",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:square/es6-class.git"
+  },
+  "dependencies": {
+    "esprima": "git://github.com/ariya/esprima.git#harmony",
+    "ast-types": "~0.3.10",
+    "recast": "~0.4.24",
+    "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "glob": "^3.2.9",
+    "googlediff": "^0.1.0",
+    "cli-color": "^0.2.3"
+  },
+  "scripts": {
+    "test": "node test/runner.js"
+  },
+  "author": "Square, Inc.",
+  "license": "Apache 2"
+}
