@@ -93,6 +93,12 @@ Then, try running the tests:
 $ npm test
 ```
 
+To run specific example files:
+
+```
+$ node test/runner test/examples/my_example.js test/examples/other_example.js
+```
+
 ### Pull Requests
 
 1. Fork it

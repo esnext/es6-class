@@ -89,9 +89,12 @@ function processFile(filename, callback) {
   runTest(basename, filename, callback);
 }
 
-glob(path.join(__dirname, 'examples/*.js'), function(err, filenames) {
-  if (err) { throw err; }
-
+/**
+ * Runs the given test files and exits with the appropriate status code.
+ *
+ * @param {Array.<string>} filenames
+ */
+function run(filenames) {
   var passed = [];
   var failed = [];
 
@@ -114,4 +117,15 @@ glob(path.join(__dirname, 'examples/*.js'), function(err, filenames) {
   }
 
   next();
-});
+}
+
+var files = process.argv.slice(2);
+
+if (files.length) {
+  run(files);
+} else {
+  glob(path.join(__dirname, 'examples/*.js'), function(err, files) {
+    if (err) { throw err; }
+    run(files);
+  });
+}
