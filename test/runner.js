@@ -1,12 +1,7 @@
 /**
- * We pull in example files from test/examples/*.js. Each example has two
- * files, one ending in `.es6.js` containing ES6 source and another ending in
- * `.es5.js` containing the ES5 source we expect to get when compiling the ES6
- * file.
- *
- * When adding tests you may write the ES5 files with whatever formatting makes
- * the most sense, since the files are not compared exactly. Instead, we use
- * `recast` to normalize the expected and actual source before comparing.
+ * We pull in example files from test/examples/*.js. Write your assertions in
+ * the file alongside the ES6 class "setup" code. The node `assert` library
+ * will already be in the context.
  */
 
 var fs = require('fs');
@@ -24,9 +19,6 @@ var diff = helper.diff;
 
 var color = require('cli-color');
 var header = color.bold;
-
-var ES6_EXAMPLE_EXT = '.es6.js';
-var ES5_EXAMPLE_EXT = '.es5.js';
 
 /**
  * Prints a line to stdout for the given test indicating that it passed.
@@ -57,11 +49,10 @@ function printFailure(testName, chunks) {
  * the callback with the success status of the test.
  *
  * @param {string} basename
- * @param {string} es6file
- * @param {string} es5file
+ * @param {string} filename
  * @param {function(boolean)} callback
  */
-function runTest(basename, es6file, es5file, callback) {
+function runTest(basename, filename, callback) {
   /**
    * Notifies the callback that we were unsuccessful and prints the error info.
    *
@@ -73,44 +64,16 @@ function runTest(basename, es6file, es5file, callback) {
     callback(false);
   }
 
-  fs.readFile(es6file, 'utf8', function(err, es6source) {
+  fs.readFile(filename, 'utf8', function(err, source) {
     if (err) { return error(err); }
 
-    fs.readFile(es5file, 'utf8', function(err, es5source) {
-      if (err) { return error(err); }
-
-      try {
-        var actual = normalize(compile(es6source));
-        var expected = normalize(es5source);
-
-        if (expected === actual) {
-          vm.runInNewContext(es5source, { assert: assert });
-          printSuccess(basename);
-          callback(true);
-        } else {
-          printFailure(basename, [
-            header('ES6'),
-            '',
-            es6source,
-            '',
-            header('Expected ES5'),
-            '',
-            es5source,
-            '',
-            header('Actual ES5'),
-            '',
-            actual,
-            '',
-            header('Normalized Diff'),
-            '',
-            diff(expected, actual)
-          ]);
-          callback(false);
-        }
-      } catch (ex) {
-        error(ex);
-      }
-    });
+    try {
+      vm.runInNewContext(compile(source), { assert: assert });
+      printSuccess(basename);
+      callback(true);
+    } catch (ex) {
+      error(ex);
+    }
   });
 }
 
@@ -121,14 +84,12 @@ function runTest(basename, es6file, es5file, callback) {
  * @param {string} filename
  * @param {function(boolean)} callback
  */
-function processES6File(filename, callback) {
-  var es6file = filename;
-  var basename = path.basename(filename, ES6_EXAMPLE_EXT);
-  var es5file = path.join(path.dirname(es6file), basename + ES5_EXAMPLE_EXT);
-  runTest(basename, es6file, es5file, callback);
+function processFile(filename, callback) {
+  var basename = path.basename(filename, '.js');
+  runTest(basename, filename, callback);
 }
 
-glob(path.join(__dirname, 'examples/*' + ES6_EXAMPLE_EXT), function(err, filenames) {
+glob(path.join(__dirname, 'examples/*.js'), function(err, filenames) {
   if (err) { throw err; }
 
   var passed = [];
@@ -137,8 +98,8 @@ glob(path.join(__dirname, 'examples/*' + ES6_EXAMPLE_EXT), function(err, filenam
   function next() {
     var filename = filenames.shift();
     if (filename) {
-      processES6File(filename, function(success) {
-        (success ? passed : failed).push(path.basename(filename, ES6_EXAMPLE_EXT));
+      processFile(filename, function(success) {
+        (success ? passed : failed).push(path.basename(filename, '.js'));
         next();
       });
     } else {
