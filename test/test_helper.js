@@ -35,7 +35,7 @@ var unchanged = function(s){ return s; };
  * @return {string}
  */
 function normalize(source) {
-  return recast.prettyPrint(recast.parse(source, recastOptions), recastOptions);
+  return recast.prettyPrint(recast.parse(source, recastOptions), recastOptions).code;
 }
 
 /**

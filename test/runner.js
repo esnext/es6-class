@@ -68,7 +68,7 @@ function runTest(basename, filename, callback) {
     if (err) { return error(err); }
 
     try {
-      vm.runInNewContext(compile(source), { assert: assert });
+      vm.runInNewContext(compile(source).code, { assert: assert });
       printSuccess(basename);
       callback(true);
     } catch (ex) {
