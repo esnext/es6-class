@@ -17,9 +17,7 @@
     "through": "~2.3.4"
   },
   "devDependencies": {
-    "glob": "^3.2.9",
-    "googlediff": "^0.1.0",
-    "cli-color": "^0.2.3"
+    "example-runner": "0.0.2"
   },
   "scripts": {
     "test": "node test/runner.js"
