@@ -14,10 +14,12 @@
   "dependencies": {
     "esprima": "git://github.com/ariya/esprima.git#harmony",
     "recast": "^0.5.13",
+    "ast-types": "^0.3.23",
     "through": "~2.3.4"
   },
   "devDependencies": {
-    "example-runner": "0.1.0"
+    "example-runner": "0.1.0",
+    "es6-rest-params": "^0.1.0"
   },
   "scripts": {
     "test": "node test/runner.js"
