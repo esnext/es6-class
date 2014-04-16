@@ -1,3 +1,12 @@
+## v0.3.2
+
+* Ensure that rest and default params work in constructors.
+
+## v0.3.1
+
+* Ensure rest params work in class methods.
+* Fix that there could not be a static and non-static property of the same name.
+
 ## v0.3.0
 
 * Add support for static methods (thanks, @thomasAboyt).
