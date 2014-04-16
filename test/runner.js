@@ -11,6 +11,7 @@ var recast = require('recast');
 
 var es6class = require('../lib');
 var es6restParams = require('es6-rest-params');
+var es6defaultParams = require('es6-default-params');
 
 var fs = require('fs');
 var path = require('path');
@@ -29,7 +30,7 @@ require('example-runner').runCLI(process.argv.slice(2), {
     };
 
     var ast = recast.parse(source, recastOptions);
-    ast = es6restParams.transform(es6class.transform(ast));
+    ast = es6defaultParams.transform(es6restParams.transform(es6class.transform(ast)));
     var result = recast.print(ast, recastOptions);
 
     fs.writeFileSync(path.join(RESULTS, testName + '.js'), result.code, 'utf8');
