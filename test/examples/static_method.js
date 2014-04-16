@@ -1,5 +1,5 @@
 class Tripler {
-  static triple(n) {
+  static triple(n=1) {
     return n * 3;
   }
 
@@ -9,13 +9,14 @@ class Tripler {
 }
 
 class MegaTripler extends Tripler {
-  static triple(n) {
+  static triple(n=1) {
     return super(n) * super(n);
   }
 }
 
 var tripler = new Tripler();
 
+assert.equal(Tripler.triple(), 3);
 assert.equal(Tripler.triple(2), 6);
 assert.equal(tripler.triple, undefined);
 
