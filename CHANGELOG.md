@@ -1,3 +1,8 @@
+## v0.4.1
+
+* Ensure extending `null` works.
+* Ensure super calls in static methods of anonymous classes work.
+
 ## v0.4.0
 
 * Add support for class expressions.
