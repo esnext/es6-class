@@ -29,19 +29,24 @@ var Person = function() {
     this.lastName = lastName;
   }
 
-  Object.defineProperty(Person.prototype, 'name', {
+  Object.defineProperty(Person.prototype, "name", {
     get: function() {
       return this.firstName + ' ' + this.lastName;
-    }
+    },
+
+    enumerable: false
   });
 
-  Person.prototype.toString = function() {
-    return this.name;
-  };
+  Object.defineProperty(Person.prototype, "toString", {
+    value: function() {
+      return this.name;
+    },
+
+    enumerable: false
+  });
 
   return Person;
-}();
-```
+}();```
 
 For more information about the proposed syntax, see the [wiki page on
 classes](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes).
