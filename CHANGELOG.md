@@ -1,3 +1,13 @@
+## v0.4.0
+
+* Add support for class expressions.
+* Add support for anonymous classes.
+* Ensure that super classes are captured at time of class definition.
+
+## v0.3.3
+
+* Fix a typo that caused default params in class method not to work.
+
 ## v0.3.2
 
 * Ensure that rest and default params work in constructors.
