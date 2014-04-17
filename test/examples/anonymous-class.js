@@ -4,6 +4,10 @@ var Animal = class {
   sayHi() {
     return 'Hi, I am a '+this.type()+'.';
   }
+
+  static getName() {
+    return 'Animal';
+  }
 };
 
 var Dog = class extends Animal {
@@ -12,9 +16,14 @@ var Dog = class extends Animal {
   sayHi() {
     return super() + ' WOOF!';
   }
+
+  static getName() {
+    return super() + '/Dog';
+  }
 };
 
 assert.equal(new Dog().sayHi(), 'Hi, I am a dog. WOOF!');
+assert.equal(Dog.getName(), 'Animal/Dog');
 
 var count = 0;
 var Cat = class extends (function(){ count++; return Animal; })() {};
