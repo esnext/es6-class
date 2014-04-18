@@ -1,3 +1,7 @@
+## v0.4.2
+
+* Adhere to the spec by making class methods writable.
+
 ## v0.4.1
 
 * Ensure extending `null` works.
