@@ -46,7 +46,8 @@ var Person = function() {
   });
 
   return Person;
-}();```
+}();
+```
 
 For more information about the proposed syntax, see the [wiki page on
 classes](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes).
