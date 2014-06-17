@@ -20,3 +20,9 @@ assert.equal(mazer.name, 'Mazer Rackham');
 mazer.name = 'Ender Wiggin';
 assert.equal(mazer.firstName, 'Ender');
 assert.equal(mazer.lastName, 'Wiggin');
+
+var forLoopProperties = [];
+for (var key in mazer) {
+  forLoopProperties.push(key);
+}
+assert.ok(forLoopProperties.indexOf('name') >= 0, 'getters/setters are enumerable');
