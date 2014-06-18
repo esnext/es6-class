@@ -20,34 +20,9 @@ class Person {
 }
 ```
 
-compiles to this:
-
-```js
-var Person = function() {
-  function Person(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
-
-  Object.defineProperty(Person.prototype, "name", {
-    get: function() {
-      return this.firstName + ' ' + this.lastName;
-    },
-
-    enumerable: false
-  });
-
-  Object.defineProperty(Person.prototype, "toString", {
-    value: function() {
-      return this.name;
-    },
-
-    enumerable: false
-  });
-
-  return Person;
-}();
-```
+compiles to the equivalent with `Person` as a function. See the [esnext demo
+page](https://square.github.io/esnext) for more on the behavior and generated
+JavaScript.
 
 For more information about the proposed syntax, see the [wiki page on
 classes](http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes).
