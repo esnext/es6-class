@@ -6,7 +6,7 @@
 
 Error.stackTraceLimit = 20;
 
-var esprima = require('esprima');
+var esprima = require('esprima-fb');
 var recast = require('recast');
 
 var es6class = require('../lib');
