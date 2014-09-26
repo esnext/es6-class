@@ -21,7 +21,7 @@
   "devDependencies": {
     "example-runner": "0.2.0",
     "es6-rest-params": "^0.1.0",
-    "es6-default-params": "0.0.1"
+    "es6-default-params": "0.2.0"
   },
   "scripts": {
     "test": "node test/runner.js"
