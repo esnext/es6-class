@@ -12,8 +12,8 @@
     "url": "git@github.com:square/es6-class.git"
   },
   "dependencies": {
-    "ast-types": "^0.4.2",
-    "ast-util": "^0.3.1",
+    "ast-types": "^0.4.9",
+    "ast-util": "^0.4.1",
     "esprima-fb": "^6001.1001.0-dev-harmony-fb",
     "recast": "^0.6.2",
     "through": "~2.3.4"
