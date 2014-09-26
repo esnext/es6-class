@@ -16,7 +16,7 @@
     "ast-util": "^0.4.1",
     "esprima-fb": "^6001.1001.0-dev-harmony-fb",
     "recast": "^0.6.2",
-    "through": "~2.3.4"
+    "through": "~2.3.6"
   },
   "devDependencies": {
     "example-runner": "0.2.0",
