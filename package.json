@@ -19,7 +19,7 @@
     "through": "~2.3.4"
   },
   "devDependencies": {
-    "example-runner": "0.1.0",
+    "example-runner": "0.2.0",
     "es6-rest-params": "^0.1.0",
     "es6-default-params": "0.0.1"
   },

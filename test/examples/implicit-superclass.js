@@ -4,4 +4,6 @@ class Obj {
   }
 }
 
-new Obj();
+assert.doesNotThrow(function() {
+  new Obj();
+});
