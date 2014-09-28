@@ -1,3 +1,32 @@
+## v0.8.0
+
+* Update dependencies.
+
+## v0.7.0
+
+* Use Facebook's fork of Esprima.
+
+## v0.6.0
+
+* Use recast's `visit` method instead of `traverse`.
+
+## v0.5.2
+
+* Ensure that static getters and setters work correctly.
+
+## v0.5.1
+
+* Ensure that getters and setters are enumerable.
+
+## v0.5.0
+
+* Ensure that classes run in strict mode.
+
+## v0.4.3
+
+* Use [ast-util](https://github.com/eventualbuddha/ast-util) for a variety of
+  ast-generation tasks.
+
 ## v0.4.2
 
 * Adhere to the spec by making class methods writable.
