@@ -1,3 +1,11 @@
+## v0.8.2
+
+* Do not bother calling defineProperties without any descriptors.
+
+## v0.8.1
+
+* Generate the correct `expression` property for function expressions (escodegen support).
+
 ## v0.8.0
 
 * Update dependencies.
