@@ -6,7 +6,6 @@
 
 Error.stackTraceLimit = 20;
 
-var esprima = require('esprima-fb');
 var recast = require('recast');
 
 var es6class = require('../lib');
@@ -24,7 +23,6 @@ if (!fs.existsSync(RESULTS)) {
 require('example-runner').runCLI(process.argv.slice(2), {
   transform: function(source, testName, filename) {
     var recastOptions = {
-      esprima: esprima,
       sourceFileName: filename,
       sourceMapName: filename + '.map'
     };
