@@ -21,7 +21,7 @@ class Person {
 ```
 
 compiles to the equivalent with `Person` as a function. See the [esnext demo
-page](https://square.github.io/esnext) for more on the behavior and generated
+page](https://esnext.github.io/esnext) for more on the behavior and generated
 JavaScript.
 
 For more information about the proposed syntax, see the [wiki page on
@@ -58,7 +58,7 @@ $ browserify -t es6-class $file
 
 ## Contributing
 
-[![Build Status](https://travis-ci.org/square/es6-class.png?branch=master)](https://travis-ci.org/square/es6-class)
+[![Build Status](https://travis-ci.org/esnext/es6-class.png?branch=master)](https://travis-ci.org/esnext/es6-class)
 
 ### Setup
 
@@ -95,5 +95,5 @@ bases and makes sure you're eligible to contribute.
 [cla]: https://spreadsheets.google.com/spreadsheet/viewform?formkey=dDViT2xzUHAwRkI3X3k5Z0lQM091OGc6MQ&ndplr=1
 
 When you have a change you'd like to see in the master repository, [send a pull
-request](https://github.com/square/es6-class/pulls). Before we merge your
+request](https://github.com/esnext/es6-class/pulls). Before we merge your
 request, we'll make sure you're in the list of people who have signed a CLA.

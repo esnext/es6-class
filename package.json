@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:square/es6-class.git"
+    "url": "git@github.com:esnext/es6-class.git"
   },
   "dependencies": {
     "ast-types": "^0.4.9",
