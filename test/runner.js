@@ -11,6 +11,7 @@ var recast = require('recast');
 var es6class = require('../lib');
 var es6restParams = require('es6-rest-params');
 var es6defaultParams = require('es6-default-params');
+var es6computed = require('es6-computed-properties');
 
 var fs = require('fs');
 var path = require('path');
@@ -21,13 +22,16 @@ if (!fs.existsSync(RESULTS)) {
 }
 
 require('example-runner').runCLI(process.argv.slice(2), {
-  transform: function(source, testName, filename) {
+  transform: function(source, testName, filename, options) {
     var recastOptions = {
       sourceFileName: filename,
       sourceMapName: filename + '.map'
     };
 
     var ast = recast.parse(source, recastOptions);
+    if (options.test && options.test.computed) {
+      ast = es6computed.transform(ast);
+    }
     ast = es6defaultParams.transform(es6restParams.transform(es6class.transform(ast)));
     var result = recast.print(ast, recastOptions);
 

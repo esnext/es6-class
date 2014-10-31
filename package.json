@@ -17,9 +17,10 @@
     "through": "~2.3.6"
   },
   "devDependencies": {
-    "example-runner": "^0.2.0",
+    "es6-computed-properties": "0.0.2",
+    "es6-default-params": "^0.4.0",
     "es6-rest-params": "^0.3.0",
-    "es6-default-params": "^0.4.0"
+    "example-runner": "^0.2.0"
   },
   "scripts": {
     "test": "node test/runner.js"
