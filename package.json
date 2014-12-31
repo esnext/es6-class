@@ -12,14 +12,14 @@
     "url": "git@github.com:esnext/es6-class.git"
   },
   "dependencies": {
-    "ast-util": "^0.5.2",
-    "recast": "^0.9.5",
+    "ast-util": "^0.6.0",
+    "recast": "^0.9.11",
     "through": "~2.3.6"
   },
   "devDependencies": {
     "example-runner": "^0.2.0",
-    "es6-rest-params": "^0.3.0",
-    "es6-default-params": "^0.4.0"
+    "es6-rest-params": "^0.3.1",
+    "es6-default-params": "^0.4.3"
   },
   "scripts": {
     "test": "node test/runner.js"
