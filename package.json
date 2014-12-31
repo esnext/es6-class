@@ -1,6 +1,6 @@
 {
   "name": "es6-class",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "ES6 classes compiled to ES5.",
   "main": "lib/index.js",
   "bin": "bin/es6-class",
